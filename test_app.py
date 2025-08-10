@@ -60,5 +60,5 @@ class FlaskAuthTestCase(unittest.TestCase):
         })
         self.assertIn(b'Unknown action.', response.data)
 
-if __name__ == '__main__':
+if __nam__ == '__main__':
     unittest.main()
