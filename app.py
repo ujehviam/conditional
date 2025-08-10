@@ -12,7 +12,8 @@ html_form = '''
     <link rel="stylesheet" href="/static/styles.css">
   </head>
   <body>
-    <h2>User Login / Signup for Conditional</h2>
+    <h2>User Login / Signup for Conditional
+    </h2>
     <form method="POST" action="/login">
       <label>Username:</label><br>
       <input type="text" name="username" required><br><br>
