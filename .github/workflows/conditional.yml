@@ -18,11 +18,11 @@ jobs:
       - name: install dependencies
         run: pip install -r requirements.txt
       - name: test code
-        run: python3 test_app.py > test_result.txt
+        run: python3 test_app.py > test_result.json
       # create artifact
       - name: store the output
         uses: actions/upload-artifact@v4
         with:
           name: test_result
-          path: test_result.txt
+          path: test_result.json
 
