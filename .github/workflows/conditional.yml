@@ -18,11 +18,13 @@ jobs:
       - name: install dependencies
         run: pip install -r requirements.txt
       - name: test code
+        id: test_code
         run: |
           python3 test_app.py > test_result.txt 2>&1
-          cat test_result.txt 
+          cat test_result.txt  
       # create artifact
       - name: store the output
+        if: failure() && steps.test_code.outcome == 'failure'
         uses: actions/upload-artifact@v4
         with:
           name: test_result
