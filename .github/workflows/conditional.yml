@@ -1,22 +1,23 @@
 name: Conditional workflow
-on: workflow_dispatch
+on: [push, workflow_dispatch]
 jobs:
   Test_code:
     runs-on: ubuntu-latest
     steps:
       - name: checkout code
         uses: actions/checkout@v4
-      - name: cache dependencies
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pip
-          key: ${{ hashFiles('requirement.txt') }}
-      - name: install dependencies
-        run: pip install -r requirements.txt
       - name: setup environment
         uses: actions/setup-python@v5
         with:
           python-version: '3.13' 
+      - name: cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ hashFiles('requirements .txt') }}
+      - name: install dependencies
+        run: pip install -r requirements.txt
+        
       - name: test code
         run: python3 test_app.py
 
