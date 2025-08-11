@@ -77,6 +77,6 @@ jobs:
       - name: output job info
         run: |
           echo "something went wrong"
-          echo "${{ (gtihub) }}"
+          echo "${{ toJSON(github) }}"
 
 
