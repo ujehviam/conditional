@@ -57,5 +57,16 @@ jobs:
       - name: build result
         run: |
           echo "app was built successfully"
-          echo "weldone ${NAME}1"
+          echo "weldone ${NAME}!"
+
+  Deploy:
+    env:
+      CLOUD: AWS
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+      - name: push code to EC2
+        run: echo "you have successfully depoyed to $CLOUD"
+
 
