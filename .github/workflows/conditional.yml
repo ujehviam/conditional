@@ -36,6 +36,7 @@ jobs:
 
   Build_App:
     needs: Test_code
+    if: success()
     env:
       NAME: Emmanuel
     runs-on: ubuntu-latest
