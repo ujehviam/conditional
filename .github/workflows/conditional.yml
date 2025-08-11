@@ -1,6 +1,4 @@
 name: Conditional workflow
-env: ...
-
 on: [push, workflow_dispatch]
 jobs:
   Test_code:
