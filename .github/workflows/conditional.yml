@@ -1,6 +1,13 @@
 name: Conditional workflow
 on: [push, workflow_dispatch]
 jobs:
+  Lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+      - name: print out something
+        run: echo "This is a lint job"
   Test_code:
     runs-on: ubuntu-latest
     steps:
@@ -36,7 +43,6 @@ jobs:
 
   Build_App:
     needs: Test_code
-    if: success()
     env:
       NAME: Emmanuel
     runs-on: ubuntu-latest
@@ -73,7 +79,7 @@ jobs:
         run: echo "you have successfully depoyed to $CLOUD"
 
   Report:
-    #needs: [Build_App, Deploy]
+    needs: [Lint, Deploy]
     if: failure()
     runs-on: ubuntu-latest
     steps:
