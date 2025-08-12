@@ -52,7 +52,7 @@ class FlaskAuthTestCase(unittest.TestCase):
         })
         self.assertIn(b"Username 'nouser' not found", response.data)
 
-    def test_invalid_action(self):
+    de test_invalid_action(self):
         response = self.app.post('/login', data={
             'username': 'anyuser',
             'password': 'anypass',
@@ -60,5 +60,5 @@ class FlaskAuthTestCase(unittest.TestCase):
         })
         self.assertIn(b'Unknown action.', response.data)
 
-if __nam__ == '__main__':
+if __name__ == '__main__':
     unittest.main()
