@@ -73,7 +73,7 @@ jobs:
         run: echo "you have successfully depoyed to $CLOUD"
 
   Report:
-    needs: [Test_code, Deploy]
+    needs: [Build_App, Deploy]
     runs-on: ubuntu-latest
     steps:
       - name: output job info
