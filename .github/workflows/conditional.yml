@@ -8,6 +8,7 @@ jobs:
         uses: actions/checkout@v4
       - name: print out something
         run: echo "This is a lint job"
+
   Test_code:
     runs-on: ubuntu-latest
     steps:
@@ -35,7 +36,7 @@ jobs:
           cat test_result.txt  
       # create artifact
       - name: store the output
-        if: failure() && steps.test_code.outcome == 'failure'
+        continue-on-error: true
         uses: actions/upload-artifact@v4
         with:
           name: test_result
