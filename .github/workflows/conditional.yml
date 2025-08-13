@@ -36,11 +36,16 @@ jobs:
           python3 test_app.py > test_result.txt 2>&1
           cat test_result.txt  
       # create artifact
-      - name: store the output
+      - name: get the output
         uses: actions/upload-artifact@v4
         with:
           name: test_result
           path: test_result.txt
+      - name: Download the result
+        uses: actions/download-artifacts@v4
+        with:
+          name: test_result
+          path: ./test_result.txt
 
   Build_App:
     needs: Test_code
