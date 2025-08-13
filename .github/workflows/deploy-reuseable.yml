@@ -1,0 +1,10 @@
+name: Reuseable_Deploy
+on: workflow_call
+jobs:
+    Deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: get code
+              uses: actions/checkout@v4
+            - name: push code to EC2
+              run: echo "you have successfully depoyed to $CLOUD using reuseable workflow"

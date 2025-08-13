@@ -70,14 +70,19 @@ jobs:
 
   Deploy:
     needs: Build_App
-    env:
-      CLOUD: AWS
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout code
-        uses: actions/checkout@v4
-      - name: push code to EC2
-        run: echo "you have successfully depoyed to $CLOUD"
+    uses: ./.github/workflows/deploy-reuseable.yml
+
+
+  # Deploy:
+  #   needs: Build_App
+  #   env:
+  #     CLOUD: AWS
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: checkout code
+  #       uses: actions/checkout@v4
+  #     - name: push code to EC2
+  #       run: echo "you have successfully depoyed to $CLOUD"
 
   Report:
     needs: [Lint, Deploy]
