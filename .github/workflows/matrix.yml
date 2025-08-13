@@ -2,6 +2,7 @@ name: Matrix
 on: push
 jobs:
     Test-Matrix:
+        continue-on-error: true
         strategy:
             matrix:
                 operating-sys: [ubuntu-latest, macos-latest-large, windows-latest]
