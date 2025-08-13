@@ -7,6 +7,12 @@ jobs:
             matrix:
                 operating-sys: [ubuntu-latest, macos-latest-large, windows-latest]
                 python-version: [2.8, 3.13]
+                include: 
+                    - operating-sys: ubuntu-latest
+                      python-version: 3.10
+                exclude:
+                    - operating-sys: [macos-latest-large, windows-latest]
+                      python-version: [2.8, 3.13]
         runs-on: ${{ matrix.operating-sys }}
         steps:
         - name: get code from repo
