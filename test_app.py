@@ -52,7 +52,7 @@ class FlaskAuthTestCase(unittest.TestCase):
         })
         self.assertIn(b"Username 'nouser' not found", response.data)
 
-    de test_invalid_action(self):
+    def test_invalid_action(self):
         response = self.app.post('/login', data={
             'username': 'anyuser',
             'password': 'anypass',

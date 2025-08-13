@@ -1,0 +1,25 @@
+name: Matrix 
+on: push
+jobs:
+    Test-Matrix:
+        strategy:
+            matrix:
+                operating-sys: [ubuntu-latest, macos-latest-large, windows-latest]
+                python-version: [2.8, 3.13]
+        runs-on: ${{ matrix.operating-sys }}
+        steps:
+        - name: get code from repo
+          uses: actions/checkout@v4
+        - name: setup environmaent
+          uses: actions/setup-python@v5
+          with:
+            python-version: ${{ matrix.python-version }}
+        - name: setup venv
+          run: |
+            python3 -m pip install --upgrade pip
+            python -m venv venvmatrix
+            source venvmatrix/bin/activate
+        - name: install dependencies
+          run: pip install -r requirements.txt
+        - name: run test
+          run: python3 test_app.py
